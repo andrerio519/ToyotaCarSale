@@ -9,494 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-    <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --accent: #f97316;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f1f5f9;
-            color: var(--dark);
-            scroll-behavior: smooth;
-        }
-
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
-
-        .navbar-brand span {
-            color: var(--accent);
-        }
-
-        .nav-link {
-            font-weight: 500;
-            margin: 0 10px;
-            transition: all 0.3s ease;
-            color: var(--dark);
-        }
-
-        .nav-link:hover {
-            color: var(--primary);
-        }
-
-        .hero {
-            background: linear-gradient(rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.8)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 120px 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            border: none;
-            padding: 12px 30px;
-            font-weight: 600;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-weight: 700;
-            color: var(--dark);
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        .car-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-            height: 100%;
-        }
-
-        .car-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .car-img {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .car-card:hover .car-img {
-            transform: scale(1.05);
-        }
-
-        .car-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--accent);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-
-        .car-price {
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.5rem;
-            margin: 15px 0;
-        }
-
-        .car-features {
-            display: flex;
-            justify-content: space-between;
-            border-top: 1px solid #eee;
-            padding: 15px 0;
-            margin-top: 15px;
-        }
-
-        .car-feature {
-            text-align: center;
-            flex: 1;
-        }
-
-        .car-feature i {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .features {
-            background-color: var(--light);
-            padding: 80px 0;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(37, 99, 235, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        /* CSS untuk Galeri */
-    .gallery-card {
-        position: relative;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        height: 100%;
-    }
-    
-    .gallery-img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-    }
-    
-    .gallery-card:hover .gallery-img {
-        transform: scale(1.05);
-    }
-    
-    .gallery-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.7);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .gallery-card:hover .gallery-overlay {
-        opacity: 1;
-    }
-    
-    .gallery-caption {
-        color: white;
-        text-align: center;
-        padding: 20px;
-    }
-    
-    .gallery-caption h5 {
-        font-weight: 600;
-        margin-bottom: 10px;
-    }
-    
-    .gallery-caption p {
-        margin-bottom: 15px;
-    }
-    
-    .gallery-filter .btn {
-        border-radius: 30px;
-        padding: 8px 20px;
-        transition: all 0.3s ease;
-    }
-    
-    .gallery-filter .btn.active {
-        background-color: var(--primary);
-        color: white;
-        border-color: var(--primary);
-    }
-    
-    .gallery-filter .btn:not(.active):hover {
-        background-color: rgba(37, 99, 235, 0.1);
-    }
-    
-    /* Animasi untuk filter galeri */
-    .gallery-item {
-        display: block;
-        transition: all 0.5s ease;
-    }
-    
-    @media (max-width: 768px) {
-        .gallery-img {
-            height: 200px;
-        }
-    }
-
-        .contact {
-            padding: 80px 0;
-            background: var(--light);
-        }
-
-        .contact-form {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        .form-control {
-            padding: 12px 15px;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 20px;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
-        }
-
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 60px 0 30px;
-        }
-
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .footer-logo span {
-            color: var(--accent);
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            margin-right: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        .footer-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-title:after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 3px;
-            background: var(--accent);
-            bottom: 0;
-            left: 0;
-            border-radius: 2px;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-            padding-left: 5px;
-        }
-
-        .copyright {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            margin-top: 50px;
-            text-align: center;
-            color: #94a3b8;
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            z-index: 1000;
-            opacity: 0;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .back-to-top.show {
-            opacity: 1;
-        }
-
-        .back-to-top:hover {
-            background: var(--secondary);
-            transform: translateY(-5px);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 80px 0;
-            }
-
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-
-            .car-features {
-                flex-wrap: wrap;
-            }
-
-            .car-feature {
-                flex: 0 0 50%;
-                margin-bottom: 10px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-
-            .contact-form {
-                padding: 25px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -508,7 +21,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Auto<span>Show</span></a>
+            <a class="navbar-brand" href="#">Contoh<span>Web</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -577,16 +90,16 @@
                                 type="button" role="tab" aria-controls="suv" aria-selected="false">SUV</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="sedan-tab" data-bs-toggle="tab" data-bs-target="#sedan"
-                                type="button" role="tab" aria-controls="sedan" aria-selected="false">Sedan</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
                             <button class="nav-link" id="mpv-tab" data-bs-toggle="tab" data-bs-target="#mpv"
                                 type="button" role="tab" aria-controls="mpv" aria-selected="false">MPV</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="sport-tab" data-bs-toggle="tab" data-bs-target="#sport"
-                                type="button" role="tab" aria-controls="sport" aria-selected="false">Sport</button>
+                            <button class="nav-link" id="hatchback-tab" data-bs-toggle="tab" data-bs-target="#hatchback"
+                                type="button" role="tab" aria-controls="hatchback" aria-selected="false">hatchback</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pickuptruck-tab" data-bs-toggle="tab" data-bs-target="#pickuptruck"
+                                type="button" role="tab" aria-controls="pickuptruck" aria-selected="false">Pickuptruck & Commercial</button>
                         </li>
                     </ul>
                 </div>
@@ -598,7 +111,6 @@
                 <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
                     <div class="row">
                         <!-- Mobil 1 -->
-                        <!-- In your car cards (example for one car) -->
                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="car-card animate">
                                 <div class="position-relative">
@@ -642,85 +154,11 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- Mobil 2 -->
-                        <div class="col-md-6 col-lg-4 mb-4">
+                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="car-card animate">
                                 <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80"
-                                        class="car-img" alt="Honda Civic">
-                                    <div class="car-badge">Populer</div>
-                                </div>
-                                <div class="p-4">
-                                    <h4>Honda Civic Turbo</h4>
-                                    <p class="text-muted">Sedan sporty dengan performa tangguh</p>
-                                    <div class="car-price">Rp 520.000.000</div>
-                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i>
-                                        Otomatis</p>
-                                    <div class="car-features">
-                                        <div class="car-feature">
-                                            <i class="fas fa-car"></i>
-                                            <div>2022</div>
-                                        </div>
-                                        <div class="car-feature">
-                                            <i class="fas fa-road"></i>
-                                            <div>18.000 km</div>
-                                        </div>
-                                        <div class="car-feature">
-                                            <i class="fas fa-chair"></i>
-                                            <div>5 Kursi</div>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary w-100 mt-3 btn-detail"
-                                        data-car="Honda Civic Turbo">Detail Mobil</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Mobil 3 -->
-                        <div class="col-md-6 col-lg-4 mb-4">
-                            <div class="car-card animate">
-                                <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-                                        class="car-img" alt="Mitsubishi Pajero">
-                                    <div class="car-badge">Diskon 10%</div>
-                                </div>
-                                <div class="p-4">
-                                    <h4>Mitsubishi Pajero Sport</h4>
-                                    <p class="text-muted">SUV tangguh untuk segala medan</p>
-                                    <div class="car-price">Rp 590.000.000</div>
-                                    <p><i class="fas fa-gas-pump me-2"></i> Diesel <i class="fas fa-cogs ms-3 me-2"></i>
-                                        Otomatis</p>
-                                    <div class="car-features">
-                                        <div class="car-feature">
-                                            <i class="fas fa-car"></i>
-                                            <div>2021</div>
-                                        </div>
-                                        <div class="car-feature">
-                                            <i class="fas fa-road"></i>
-                                            <div>25.000 km</div>
-                                        </div>
-                                        <div class="car-feature">
-                                            <i class="fas fa-chair"></i>
-                                            <div>7 Kursi</div>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary w-100 mt-3 btn-detail"
-                                        data-car="Mitsubishi Pajero Sport">Detail Mobil</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tab SUV -->
-                <div class="tab-pane fade" id="suv" role="tabpanel" aria-labelledby="suv-tab">
-                    <div class="row">
-                        <!-- Mobil 1 - SUV -->
-                        <div class="col-md-6 col-lg-4 mb-4">
-                            <div class="car-card animate">
-                                <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
                                         class="car-img" alt="Toyota Fortuner">
                                     <div class="car-badge">Baru</div>
                                 </div>
@@ -728,8 +166,7 @@
                                     <h4>Toyota Fortuner</h4>
                                     <p class="text-muted">SUV Premium dengan fitur lengkap</p>
                                     <div class="car-price">Rp 560.000.000</div>
-                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i>
-                                        Otomatis</p>
+                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i> Otomatis</p>
                                     <div class="car-features">
                                         <div class="car-feature">
                                             <i class="fas fa-car"></i>
@@ -744,133 +181,42 @@
                                             <div>7 Kursi</div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary w-100 mt-3 btn-detail"
-                                        data-car="Toyota Fortuner">Detail Mobil</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Mobil 2 - SUV -->
-                        <div class="col-md-6 col-lg-4 mb-4">
-                            <div class="car-card animate">
-                                <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-                                        class="car-img" alt="Mitsubishi Pajero">
-                                    <div class="car-badge">Diskon 10%</div>
-                                </div>
-                                <div class="p-4">
-                                    <h4>Mitsubishi Pajero Sport</h4>
-                                    <p class="text-muted">SUV tangguh untuk segala medan</p>
-                                    <div class="car-price">Rp 590.000.000</div>
-                                    <p><i class="fas fa-gas-pump me-2"></i> Diesel <i class="fas fa-cogs ms-3 me-2"></i>
-                                        Otomatis</p>
-                                    <div class="car-features">
-                                        <div class="car-feature">
-                                            <i class="fas fa-car"></i>
-                                            <div>2021</div>
-                                        </div>
-                                        <div class="car-feature">
-                                            <i class="fas fa-road"></i>
-                                            <div>25.000 km</div>
-                                        </div>
-                                        <div class="car-feature">
-                                            <i class="fas fa-chair"></i>
-                                            <div>7 Kursi</div>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary w-100 mt-3 btn-detail"
-                                        data-car="Mitsubishi Pajero Sport">Detail Mobil</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Mobil 3 - SUV -->
-                        <div class="col-md-6 col-lg-4 mb-4">
-                            <div class="car-card animate">
-                                <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                                        class="car-img" alt="Range Rover">
-                                    <div class="car-badge">Luxury</div>
-                                </div>
-                                <div class="p-4">
-                                    <h4>Range Rover Evoque</h4>
-                                    <p class="text-muted">SUV mewah dengan teknologi canggih</p>
-                                    <div class="car-price">Rp 1.250.000.000</div>
-                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i>
-                                        Otomatis</p>
-                                    <div class="car-features">
-                                        <div class="car-feature">
-                                            <i class="fas fa-car"></i>
-                                            <div>2022</div>
-                                        </div>
-                                        <div class="car-feature">
-                                            <i class="fas fa-road"></i>
-                                            <div>15.000 km</div>
-                                        </div>
-                                        <div class="car-feature">
-                                            <i class="fas fa-chair"></i>
-                                            <div>5 Kursi</div>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary w-100 mt-3 btn-detail"
-                                        data-car="Range Rover Evoque">Detail Mobil</button>
+                                    <button class="btn btn-primary w-100 mt-3 btn-detail" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#carDetailModal"
+                                            data-car="Toyota Fortuner"
+                                            data-price="560000000"
+                                            data-year="2023"
+                                            data-mileage="12000"
+                                            data-fuel="Bensin"
+                                            data-transmission="Otomatis"
+                                            data-seats="7"
+                                            data-image="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                            data-description="SUV Premium dengan fitur lengkap dan nyaman untuk keluarga">
+                                        Detail Mobil
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tab Sedan -->
-                <div class="tab-pane fade" id="sedan" role="tabpanel" aria-labelledby="sedan-tab">
+                <!-- Tab SUV -->
+                <div class="tab-pane fade" id="suv" role="tabpanel" aria-labelledby="suv-tab">
                     <div class="row">
-                        <!-- Mobil 1 - Sedan -->
+                        <!-- Mobil 1 -->
                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="car-card animate">
                                 <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80"
-                                        class="car-img" alt="Honda Civic">
-                                    <div class="car-badge">Populer</div>
+                                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                                        class="car-img" alt="Toyota Fortuner">
+                                    <div class="car-badge">Baru</div>
                                 </div>
                                 <div class="p-4">
-                                    <h4>Honda Civic Turbo</h4>
-                                    <p class="text-muted">Sedan sporty dengan performa tangguh</p>
-                                    <div class="car-price">Rp 520.000.000</div>
-                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i>
-                                        Otomatis</p>
-                                    <div class="car-features">
-                                        <div class="car-feature">
-                                            <i class="fas fa-car"></i>
-                                            <div>2022</div>
-                                        </div>
-                                        <div class="car-feature">
-                                            <i class="fas fa-road"></i>
-                                            <div>18.000 km</div>
-                                        </div>
-                                        <div class="car-feature">
-                                            <i class="fas fa-chair"></i>
-                                            <div>5 Kursi</div>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary w-100 mt-3 btn-detail"
-                                        data-car="Honda Civic Turbo">Detail Mobil</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Mobil 2 - Sedan -->
-                        <div class="col-md-6 col-lg-4 mb-4">
-                            <div class="car-card animate">
-                                <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80"
-                                        class="car-img" alt="Toyota Camry">
-                                    <div class="car-badge">Eksklusif</div>
-                                </div>
-                                <div class="p-4">
-                                    <h4>Toyota Camry Hybrid</h4>
-                                    <p class="text-muted">Sedan mewah dengan teknologi hybrid</p>
-                                    <div class="car-price">Rp 750.000.000</div>
-                                    <p><i class="fas fa-gas-pump me-2"></i> Hybrid <i class="fas fa-cogs ms-3 me-2"></i>
-                                        Otomatis</p>
+                                    <h4>Toyota Fortuner</h4>
+                                    <p class="text-muted">SUV Premium dengan fitur lengkap</p>
+                                    <div class="car-price">Rp 560.000.000</div>
+                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i> Otomatis</p>
                                     <div class="car-features">
                                         <div class="car-feature">
                                             <i class="fas fa-car"></i>
@@ -878,72 +224,93 @@
                                         </div>
                                         <div class="car-feature">
                                             <i class="fas fa-road"></i>
-                                            <div>8.000 km</div>
+                                            <div>12.000 km</div>
                                         </div>
                                         <div class="car-feature">
                                             <i class="fas fa-chair"></i>
-                                            <div>5 Kursi</div>
+                                            <div>7 Kursi</div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary w-100 mt-3 btn-detail"
-                                        data-car="Toyota Camry Hybrid">Detail Mobil</button>
+                                    <button class="btn btn-primary w-100 mt-3 btn-detail" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#carDetailModal"
+                                            data-car="Toyota Fortuner"
+                                            data-price="560000000"
+                                            data-year="2023"
+                                            data-mileage="12000"
+                                            data-fuel="Bensin"
+                                            data-transmission="Otomatis"
+                                            data-seats="7"
+                                            data-image="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                            data-description="SUV Premium dengan fitur lengkap dan nyaman untuk keluarga">
+                                        Detail Mobil
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobil 2 -->
+                         <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="car-card animate">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                                        class="car-img" alt="Toyota Fortuner">
+                                    <div class="car-badge">Baru</div>
+                                </div>
+                                <div class="p-4">
+                                    <h4>Toyota Fortuner</h4>
+                                    <p class="text-muted">SUV Premium dengan fitur lengkap</p>
+                                    <div class="car-price">Rp 560.000.000</div>
+                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i> Otomatis</p>
+                                    <div class="car-features">
+                                        <div class="car-feature">
+                                            <i class="fas fa-car"></i>
+                                            <div>2023</div>
+                                        </div>
+                                        <div class="car-feature">
+                                            <i class="fas fa-road"></i>
+                                            <div>12.000 km</div>
+                                        </div>
+                                        <div class="car-feature">
+                                            <i class="fas fa-chair"></i>
+                                            <div>7 Kursi</div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3 btn-detail" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#carDetailModal"
+                                            data-car="Toyota Fortuner"
+                                            data-price="560000000"
+                                            data-year="2023"
+                                            data-mileage="12000"
+                                            data-fuel="Bensin"
+                                            data-transmission="Otomatis"
+                                            data-seats="7"
+                                            data-image="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                            data-description="SUV Premium dengan fitur lengkap dan nyaman untuk keluarga">
+                                        Detail Mobil
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tab MPV -->
+                <!-- Tab MVP -->
                 <div class="tab-pane fade" id="mpv" role="tabpanel" aria-labelledby="mpv-tab">
                     <div class="row">
-                        <!-- Mobil 1 - MPV -->
+                        <!-- Mobil 1 -->
                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="car-card animate">
                                 <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                    <img src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
                                         class="car-img" alt="Toyota Alphard">
-                                    <div class="car-badge">Premium</div>
+                                    <div class="car-badge">Baru</div>
                                 </div>
                                 <div class="p-4">
                                     <h4>Toyota Alphard</h4>
                                     <p class="text-muted">MPV mewah dengan kenyamanan maksimal</p>
-                                    <div class="car-price">Rp 1.150.000.000</div>
-                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i>
-                                        Otomatis</p>
-                                    <div class="car-features">
-                                        <div class="car-feature">
-                                            <i class="fas fa-car"></i>
-                                            <div>2021</div>
-                                        </div>
-                                        <div class="car-feature">
-                                            <i class="fas fa-road"></i>
-                                            <div>30.000 km</div>
-                                        </div>
-                                        <div class="car-feature">
-                                            <i class="fas fa-chair"></i>
-                                            <div>7 Kursi</div>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary w-100 mt-3 btn-detail"
-                                        data-car="Toyota Alphard">Detail Mobil</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Mobil 2 - MPV -->
-                        <div class="col-md-6 col-lg-4 mb-4">
-                            <div class="car-card animate">
-                                <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80"
-                                        class="car-img" alt="Toyota Avanza">
-                                    <div class="car-badge">Best Seller</div>
-                                </div>
-                                <div class="p-4">
-                                    <h4>Toyota Avanza</h4>
-                                    <p class="text-muted">MPV keluarga dengan harga terjangkau</p>
-                                    <div class="car-price">Rp 280.000.000</div>
-                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i>
-                                        Otomatis</p>
+                                    <div class="car-price">Rp 560.000.000</div>
+                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i> Otomatis</p>
                                     <div class="car-features">
                                         <div class="car-feature">
                                             <i class="fas fa-car"></i>
@@ -951,88 +318,257 @@
                                         </div>
                                         <div class="car-feature">
                                             <i class="fas fa-road"></i>
-                                            <div>5.000 km</div>
+                                            <div>12.000 km</div>
                                         </div>
                                         <div class="car-feature">
                                             <i class="fas fa-chair"></i>
                                             <div>7 Kursi</div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary w-100 mt-3 btn-detail"
-                                        data-car="Toyota Avanza">Detail Mobil</button>
+                                    <button class="btn btn-primary w-100 mt-3 btn-detail" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#carDetailModal"
+                                            data-car="Toyota Fortuner"
+                                            data-price="560000000"
+                                            data-year="2023"
+                                            data-mileage="12000"
+                                            data-fuel="Bensin"
+                                            data-transmission="Otomatis"
+                                            data-seats="7"
+                                            data-image="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                            data-description="SUV Premium dengan fitur lengkap dan nyaman untuk keluarga">
+                                        Detail Mobil
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobil 2 -->
+                         <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="car-card animate">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                                        class="car-img" alt="Toyota Alphard">
+                                    <div class="car-badge">Baru</div>
+                                </div>
+                                <div class="p-4">
+                                    <h4>Toyota Alphard</h4>
+                                    <p class="text-muted">MPV mewah dengan kenyamanan maksimal</p>
+                                    <div class="car-price">Rp 560.000.000</div>
+                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i> Otomatis</p>
+                                    <div class="car-features">
+                                        <div class="car-feature">
+                                            <i class="fas fa-car"></i>
+                                            <div>2023</div>
+                                        </div>
+                                        <div class="car-feature">
+                                            <i class="fas fa-road"></i>
+                                            <div>12.000 km</div>
+                                        </div>
+                                        <div class="car-feature">
+                                            <i class="fas fa-chair"></i>
+                                            <div>7 Kursi</div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3 btn-detail" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#carDetailModal"
+                                            data-car="Toyota Fortuner"
+                                            data-price="560000000"
+                                            data-year="2023"
+                                            data-mileage="12000"
+                                            data-fuel="Bensin"
+                                            data-transmission="Otomatis"
+                                            data-seats="7"
+                                            data-image="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                            data-description="SUV Premium dengan fitur lengkap dan nyaman untuk keluarga">
+                                        Detail Mobil
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Tab Sport -->
-                <div class="tab-pane fade" id="sport" role="tabpanel" aria-labelledby="sport-tab">
+                <!-- Tab Hatchback -->
+                 <div class="tab-pane fade" id="hatchback" role="tabpanel" aria-labelledby="hatchback-tab">
                     <div class="row">
-                        <!-- Mobil 1 - Sport -->
+                        <!-- Mobil 1 -->
                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="car-card animate">
                                 <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=873&q=80"
-                                        class="car-img" alt="Porsche 911">
-                                    <div class="car-badge">Sport</div>
+                                    <img src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                                        class="car-img" alt="Toyota Alphard">
+                                    <div class="car-badge">Baru</div>
                                 </div>
                                 <div class="p-4">
-                                    <h4>Porsche 911</h4>
-                                    <p class="text-muted">Mobil sport legendaris dengan performa tinggi</p>
-                                    <div class="car-price">Rp 2.500.000.000</div>
-                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i>
-                                        Otomatis</p>
+                                    <h4>Toyota Alphard</h4>
+                                    <p class="text-muted">MPV mewah dengan kenyamanan maksimal</p>
+                                    <div class="car-price">Rp 560.000.000</div>
+                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i> Otomatis</p>
                                     <div class="car-features">
                                         <div class="car-feature">
                                             <i class="fas fa-car"></i>
-                                            <div>2022</div>
+                                            <div>2023</div>
                                         </div>
                                         <div class="car-feature">
                                             <i class="fas fa-road"></i>
-                                            <div>7.000 km</div>
+                                            <div>12.000 km</div>
                                         </div>
                                         <div class="car-feature">
                                             <i class="fas fa-chair"></i>
-                                            <div>2 Kursi</div>
+                                            <div>7 Kursi</div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary w-100 mt-3 btn-detail" data-car="Porsche 911">Detail
-                                        Mobil</button>
+                                    <button class="btn btn-primary w-100 mt-3 btn-detail" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#carDetailModal"
+                                            data-car="Toyota Fortuner"
+                                            data-price="560000000"
+                                            data-year="2023"
+                                            data-mileage="12000"
+                                            data-fuel="Bensin"
+                                            data-transmission="Otomatis"
+                                            data-seats="7"
+                                            data-image="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                            data-description="SUV Premium dengan fitur lengkap dan nyaman untuk keluarga">
+                                        Detail Mobil
+                                    </button>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Mobil 2 - Sport -->
-                        <div class="col-md-6 col-lg-4 mb-4">
+                        <!-- Mobil 2 -->
+                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="car-card animate">
                                 <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                                        class="car-img" alt="Lamborghini">
-                                    <div class="car-badge">Supercar</div>
+                                    <img src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                                        class="car-img" alt="Toyota Alphard">
+                                    <div class="car-badge">Baru</div>
                                 </div>
                                 <div class="p-4">
-                                    <h4>Lamborghini Huracan</h4>
-                                    <p class="text-muted">Supercar dengan desain agresif</p>
-                                    <div class="car-price">Rp 5.800.000.000</div>
-                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i>
-                                        Otomatis</p>
+                                    <h4>Toyota Alphard</h4>
+                                    <p class="text-muted">MPV mewah dengan kenyamanan maksimal</p>
+                                    <div class="car-price">Rp 560.000.000</div>
+                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i> Otomatis</p>
                                     <div class="car-features">
                                         <div class="car-feature">
                                             <i class="fas fa-car"></i>
-                                            <div>2021</div>
+                                            <div>2023</div>
                                         </div>
                                         <div class="car-feature">
                                             <i class="fas fa-road"></i>
-                                            <div>3.000 km</div>
+                                            <div>12.000 km</div>
                                         </div>
                                         <div class="car-feature">
                                             <i class="fas fa-chair"></i>
-                                            <div>2 Kursi</div>
+                                            <div>7 Kursi</div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary w-100 mt-3 btn-detail"
-                                        data-car="Lamborghini Huracan">Detail Mobil</button>
+                                    <button class="btn btn-primary w-100 mt-3 btn-detail" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#carDetailModal"
+                                            data-car="Toyota Fortuner"
+                                            data-price="560000000"
+                                            data-year="2023"
+                                            data-mileage="12000"
+                                            data-fuel="Bensin"
+                                            data-transmission="Otomatis"
+                                            data-seats="7"
+                                            data-image="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                            data-description="SUV Premium dengan fitur lengkap dan nyaman untuk keluarga">
+                                        Detail Mobil
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tab Pickup -->
+                  <div class="tab-pane fade" id="pickuptruck" role="tabpanel" aria-labelledby="pickuptruck-tab">
+                    <div class="row">
+                        <!-- Mobil 1 -->
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="car-card animate">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                                        class="car-img" alt="Toyota Alphard">
+                                    <div class="car-badge">Baru</div>
+                                </div>
+                                <div class="p-4">
+                                    <h4>Toyota Alphard</h4>
+                                    <p class="text-muted">MPV mewah dengan kenyamanan maksimal</p>
+                                    <div class="car-price">Rp 560.000.000</div>
+                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i> Otomatis</p>
+                                    <div class="car-features">
+                                        <div class="car-feature">
+                                            <i class="fas fa-car"></i>
+                                            <div>2023</div>
+                                        </div>
+                                        <div class="car-feature">
+                                            <i class="fas fa-road"></i>
+                                            <div>12.000 km</div>
+                                        </div>
+                                        <div class="car-feature">
+                                            <i class="fas fa-chair"></i>
+                                            <div>7 Kursi</div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3 btn-detail" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#carDetailModal"
+                                            data-car="Toyota Fortuner"
+                                            data-price="560000000"
+                                            data-year="2023"
+                                            data-mileage="12000"
+                                            data-fuel="Bensin"
+                                            data-transmission="Otomatis"
+                                            data-seats="7"
+                                            data-image="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                            data-description="SUV Premium dengan fitur lengkap dan nyaman untuk keluarga">
+                                        Detail Mobil
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobil 2 -->
+                         <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="car-card animate">
+                                <div class="position-relative">
+                                    <img src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                                        class="car-img" alt="Toyota Alphard">
+                                    <div class="car-badge">Baru</div>
+                                </div>
+                                <div class="p-4">
+                                    <h4>Toyota Alphard</h4>
+                                    <p class="text-muted">MPV mewah dengan kenyamanan maksimal</p>
+                                    <div class="car-price">Rp 560.000.000</div>
+                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i> Otomatis</p>
+                                    <div class="car-features">
+                                        <div class="car-feature">
+                                            <i class="fas fa-car"></i>
+                                            <div>2023</div>
+                                        </div>
+                                        <div class="car-feature">
+                                            <i class="fas fa-road"></i>
+                                            <div>12.000 km</div>
+                                        </div>
+                                        <div class="car-feature">
+                                            <i class="fas fa-chair"></i>
+                                            <div>7 Kursi</div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary w-100 mt-3 btn-detail" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#carDetailModal"
+                                            data-car="Toyota Fortuner"
+                                            data-price="560000000"
+                                            data-year="2023"
+                                            data-mileage="12000"
+                                            data-fuel="Bensin"
+                                            data-transmission="Otomatis"
+                                            data-seats="7"
+                                            data-image="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                            data-description="SUV Premium dengan fitur lengkap dan nyaman untuk keluarga">
+                                        Detail Mobil
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -1372,7 +908,7 @@
                             </div>
                             <div>
                                 <h5>Alamat</h5>
-                                <p class="mb-0">Jl. Sudirman No. 123, Jakarta Pusat 10220</p>
+                                <p class="mb-0">Jl. Adam Malik No.01 Karang Asam Sungai Kunjang Samarinda 75126</p>
                             </div>
                         </div>
                         <div class="d-flex mb-4">
@@ -1381,7 +917,7 @@
                             </div>
                             <div>
                                 <h5>Telepon</h5>
-                                <p class="mb-0">(021) 1234-5678</p>
+                                <p class="mb-0">081649113708</p>
                             </div>
                         </div>
                         <div class="d-flex mb-4">
@@ -1390,7 +926,7 @@
                             </div>
                             <div>
                                 <h5>Email</h5>
-                                <p class="mb-0">info@autoshow.id</p>
+                                <p class="mb-0">andrerio.519@gmail.com</p>
                             </div>
                         </div>
                         <div class="d-flex">
@@ -1406,7 +942,7 @@
                         </div>
                         <div class="mt-5">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.369723074443!2d106.82250931476906!3d-6.208595662680621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3d63a1a1d4f%3A0x1e0b5dcd7d26c925!2sJl.%20Jend.%20Sudirman%2C%20Daerah%20Khusus%20Ibukota%20Jakarta!5e0!3m2!1sid!2sid!4v1689241746469!5m2!1sid!2sid"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6566733184336!2d117.1164121!3d-0.5157585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67f0051bb8ec7%3A0x8715e36915e96e60!2sKantor%20Hukum%20Teguh%20Adi%20Nugraha%2CS.H%20%26%20Partners%20Advocates%20%26%20Legal%20Consultants!5e0!3m2!1sid!2sid!4v1753864031235!5m2!1sid!2sid"
                                 width="100%" height="250" style="border:0; border-radius: 10px;" allowfullscreen=""
                                 loading="lazy"></iframe>
                         </div>
@@ -1421,8 +957,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-5 mb-lg-0">
-                    <a href="#" class="footer-logo">Auto<span>Show</span></a>
-                    <p class="mb-4">AutoShow adalah platform terpercaya untuk membeli mobil baru dan bekas dengan
+                    <a href="#" class="footer-logo">Contoh<span>Web</span></a>
+                    <p class="mb-4">ContohWeb adalah platform terpercaya untuk membeli mobil baru dan bekas dengan
                         kualitas terjamin dan proses yang mudah.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1461,7 +997,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 AutoShow. All Rights Reserved.</p>
+                <p>&copy; 2025 Andreriotech. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -1540,18 +1076,18 @@
             $(window).scroll(animateOnScroll);
             animateOnScroll();
 
-            // Detail mobil button
-            $('.btn-detail').click(function () {
-                var carName = $(this).data('car');
-                alert('Anda memilih mobil: ' + carName + '\n\nSilakan hubungi kami untuk informasi lebih lanjut!');
-            });
+            // // Detail mobil button
+            // $('.btn-detail').click(function () {
+            //     var carName = $(this).data('car');
+            //     alert('Anda memilih mobil: ' + carName + '\n\nSilakan hubungi kami untuk informasi lebih lanjut!');
+            // });
 
-            // Form submission
-            $('#contactForm').submit(function (e) {
-                e.preventDefault();
-                alert('Pesan Anda telah terkirim!\n\nTim kami akan segera menghubungi Anda.');
-                this.reset();
-            });
+            // // Form submission
+            // $('#contactForm').submit(function (e) {
+            //     e.preventDefault();
+            //     alert('Pesan Anda telah terkirim!\n\nTim kami akan segera menghubungi Anda.');
+            //     this.reset();
+            // });
 
             // Navbar background change on scroll
             $(window).scroll(function () {
