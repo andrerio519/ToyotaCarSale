@@ -218,38 +218,87 @@
             color: var(--primary);
         }
 
-        .testimonials {
-            padding: 80px 0;
-            background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+        /* CSS untuk Galeri */
+    .gallery-card {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .gallery-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .gallery-card:hover .gallery-img {
+        transform: scale(1.05);
+    }
+    
+    .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .gallery-card:hover .gallery-overlay {
+        opacity: 1;
+    }
+    
+    .gallery-caption {
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .gallery-caption h5 {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    
+    .gallery-caption p {
+        margin-bottom: 15px;
+    }
+    
+    .gallery-filter .btn {
+        border-radius: 30px;
+        padding: 8px 20px;
+        transition: all 0.3s ease;
+    }
+    
+    .gallery-filter .btn.active {
+        background-color: var(--primary);
+        color: white;
+        border-color: var(--primary);
+    }
+    
+    .gallery-filter .btn:not(.active):hover {
+        background-color: rgba(37, 99, 235, 0.1);
+    }
+    
+    /* Animasi untuk filter galeri */
+    .gallery-item {
+        display: block;
+        transition: all 0.5s ease;
+    }
+    
+    @media (max-width: 768px) {
+        .gallery-img {
+            height: 200px;
         }
-
-        .testimonial-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            margin: 20px;
-            position: relative;
-        }
-
-        .testimonial-card:before {
-            content: "" ";
- position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 5rem;
-            color: rgba(37, 99, 235, 0.1);
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-
-        .testimonial-img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 20px;
-        }
+    }
 
         .contact {
             padding: 80px 0;
@@ -475,7 +524,7 @@
                         <a class="nav-link" href="#fitur">Fitur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#testimoni">Testimoni</a>
+                        <a class="nav-link" href="#galeri">Galeri</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#kontak">Kontak</a>
@@ -549,10 +598,11 @@
                 <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
                     <div class="row">
                         <!-- Mobil 1 -->
+                        <!-- In your car cards (example for one car) -->
                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="car-card animate">
                                 <div class="position-relative">
-                                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
                                         class="car-img" alt="Toyota Fortuner">
                                     <div class="car-badge">Baru</div>
                                 </div>
@@ -560,8 +610,7 @@
                                     <h4>Toyota Fortuner</h4>
                                     <p class="text-muted">SUV Premium dengan fitur lengkap</p>
                                     <div class="car-price">Rp 560.000.000</div>
-                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i>
-                                        Otomatis</p>
+                                    <p><i class="fas fa-gas-pump me-2"></i> Bensin <i class="fas fa-cogs ms-3 me-2"></i> Otomatis</p>
                                     <div class="car-features">
                                         <div class="car-feature">
                                             <i class="fas fa-car"></i>
@@ -576,8 +625,20 @@
                                             <div>7 Kursi</div>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary w-100 mt-3 btn-detail"
-                                        data-car="Toyota Fortuner">Detail Mobil</button>
+                                    <button class="btn btn-primary w-100 mt-3 btn-detail" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#carDetailModal"
+                                            data-car="Toyota Fortuner"
+                                            data-price="560000000"
+                                            data-year="2023"
+                                            data-mileage="12000"
+                                            data-fuel="Bensin"
+                                            data-transmission="Otomatis"
+                                            data-seats="7"
+                                            data-image="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                                            data-description="SUV Premium dengan fitur lengkap dan nyaman untuk keluarga">
+                                        Detail Mobil
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -1033,86 +1094,233 @@
         </div>
     </section>
 
-    <!-- Testimoni -->
-    <section id="testimoni" class="testimonials">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <h2>Apa Kata Pelanggan Kami</h2>
+    <!-- Galeri -->
+<section id="galeri" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Galeri Mobil</h2>
+                    <p class="mt-3">Lihat koleksi mobil terbaik kami dalam berbagai angle</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Filter Galeri -->
+            <div class="col-12 mb-4">
+                <div class="d-flex flex-wrap justify-content-center gallery-filter">
+                    <button class="btn btn-outline-primary mx-2 mb-2 active" data-filter="all">Semua</button>
+                    <button class="btn btn-outline-primary mx-2 mb-2" data-filter="suv">SUV</button>
+                    <button class="btn btn-outline-primary mx-2 mb-2" data-filter="sedan">Sedan</button>
+                    <button class="btn btn-outline-primary mx-2 mb-2" data-filter="mpv">MPV</button>
+                    <button class="btn btn-outline-primary mx-2 mb-2" data-filter="sport">Sport</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row gallery-container">
+            <!-- Item Galeri 1 -->
+            <div class="col-md-6 col-lg-4 mb-4 gallery-item suv">
+                <div class="gallery-card animate">
+                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                         class="img-fluid gallery-img" alt="Toyota Fortuner">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h5>Toyota Fortuner</h5>
+                            <p>SUV Premium dengan fitur lengkap</p>
+                            <a href="#" class="btn btn-sm btn-primary btn-view" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" data-title="Toyota Fortuner" data-desc="SUV Premium dengan fitur lengkap">Lihat Detail</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <!-- Testimoni 1 -->
-                            <div class="carousel-item active">
-                                <div class="testimonial-card">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <img src="https://randomuser.me/api/portraits/men/32.jpg"
-                                            class="testimonial-img" alt="Testimoni">
-                                        <div>
-                                            <h5 class="mb-0">Budi Santoso</h5>
-                                            <p class="text-muted mb-0">Pengusaha</p>
-                                        </div>
-                                    </div>
-                                    <p class="mb-0">"Saya sangat puas dengan pelayanan AutoShow. Proses pembelian mobil
-                                        bekas sangat transparan dan mudah. Mobil yang saya beli dalam kondisi sangat
-                                        baik seperti baru. Terima kasih!"</p>
-                                </div>
-                            </div>
-
-                            <!-- Testimoni 2 -->
-                            <div class="carousel-item">
-                                <div class="testimonial-card">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <img src="https://randomuser.me/api/portraits/women/44.jpg"
-                                            class="testimonial-img" alt="Testimoni">
-                                        <div>
-                                            <h5 class="mb-0">Dewi Anggraini</h5>
-                                            <p class="text-muted mb-0">Dokter</p>
-                                        </div>
-                                    </div>
-                                    <p class="mb-0">"Pengalaman beli mobil pertama saya sangat menyenangkan di AutoShow.
-                                        Stafnya ramah dan menjelaskan semua detail dengan jelas. Proses kredit juga
-                                        cepat disetujui. Sangat recommended!"</p>
-                                </div>
-                            </div>
-
-                            <!-- Testimoni 3 -->
-                            <div class="carousel-item">
-                                <div class="testimonial-card">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <img src="https://randomuser.me/api/portraits/men/67.jpg"
-                                            class="testimonial-img" alt="Testimoni">
-                                        <div>
-                                            <h5 class="mb-0">Ahmad Fauzi</h5>
-                                            <p class="text-muted mb-0">Pegawai Swasta</p>
-                                        </div>
-                                    </div>
-                                    <p class="mb-0">"Setelah mencari-cari di banyak dealer, akhirnya saya menemukan
-                                        mobil impian dengan harga terbaik di AutoShow. Garansi yang diberikan juga
-                                        membuat saya lebih tenang. Terima kasih!"</p>
-                                </div>
-                            </div>
+            
+            <!-- Item Galeri 2 -->
+            <div class="col-md-6 col-lg-4 mb-4 gallery-item sedan">
+                <div class="gallery-card animate">
+                    <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80" 
+                         class="img-fluid gallery-img" alt="Honda Civic">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h5>Honda Civic Turbo</h5>
+                            <p>Sedan sporty dengan performa tangguh</p>
+                            <a href="#" class="btn btn-sm btn-primary btn-view" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80" data-title="Honda Civic Turbo" data-desc="Sedan sporty dengan performa tangguh">Lihat Detail</a>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item Galeri 3 -->
+            <div class="col-md-6 col-lg-4 mb-4 gallery-item suv">
+                <div class="gallery-card animate">
+                    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                         class="img-fluid gallery-img" alt="Mitsubishi Pajero">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h5>Mitsubishi Pajero Sport</h5>
+                            <p>SUV tangguh untuk segala medan</p>
+                            <a href="#" class="btn btn-sm btn-primary btn-view" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" data-title="Mitsubishi Pajero Sport" data-desc="SUV tangguh untuk segala medan">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item Galeri 4 -->
+            <div class="col-md-6 col-lg-4 mb-4 gallery-item mpv">
+                <div class="gallery-card animate">
+                    <img src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                         class="img-fluid gallery-img" alt="Toyota Alphard">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h5>Toyota Alphard</h5>
+                            <p>MPV mewah dengan kenyamanan maksimal</p>
+                            <a href="#" class="btn btn-sm btn-primary btn-view" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" data-title="Toyota Alphard" data-desc="MPV mewah dengan kenyamanan maksimal">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item Galeri 5 -->
+            <div class="col-md-6 col-lg-4 mb-4 gallery-item sport">
+                <div class="gallery-card animate">
+                    <img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=873&q=80" 
+                         class="img-fluid gallery-img" alt="Porsche 911">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h5>Porsche 911</h5>
+                            <p>Mobil sport legendaris dengan performa tinggi</p>
+                            <a href="#" class="btn btn-sm btn-primary btn-view" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1494972308805-463bc619d34e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=873&q=80" data-title="Porsche 911" data-desc="Mobil sport legendaris dengan performa tinggi">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item Galeri 6 -->
+            <div class="col-md-6 col-lg-4 mb-4 gallery-item sport">
+                <div class="gallery-card animate">
+                    <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                         class="img-fluid gallery-img" alt="Lamborghini">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h5>Lamborghini Huracan</h5>
+                            <p>Supercar dengan desain agresif</p>
+                            <a href="#" class="btn btn-sm btn-primary btn-view" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" data-title="Lamborghini Huracan" data-desc="Supercar dengan desain agresif">Lihat Detail</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- Modal untuk gambar besar -->
+<div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="galleryModalTitle">Judul Gambar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="" id="galleryModalImage" class="img-fluid" alt="">
+                <p class="mt-3" id="galleryModalDesc">Deskripsi gambar</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Car Detail Modal -->
+<div class="modal fade" id="carDetailModal" tabindex="-1" aria-labelledby="carDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="carDetailModalLabel">Detail Mobil</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="" id="modalCarImage" class="img-fluid rounded" alt="Car Image">
+                        <div class="mt-3">
+                            <h4 id="modalCarName"></h4>
+                            <p class="text-muted" id="modalCarDescription"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Spesifikasi</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Harga
+                                        <span class="badge bg-primary rounded-pill" id="modalCarPrice"></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Tahun
+                                        <span id="modalCarYear"></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Kilometer
+                                        <span id="modalCarMileage"></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Bahan Bakar
+                                        <span id="modalCarFuel"></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Transmisi
+                                        <span id="modalCarTransmission"></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Jumlah Kursi
+                                        <span id="modalCarSeats"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Minat Mobil Ini?</h5>
+                                <form id="interestForm">
+                                    <div class="mb-3">
+                                        <label for="customerName" class="form-label">Nama Anda</label>
+                                        <input type="text" class="form-control" id="customerName" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="customerPhone" class="form-label">Nomor WhatsApp</label>
+                                        <input type="tel" class="form-control" id="customerPhone" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="interestType" class="form-label">Saya tertarik untuk</label>
+                                        <select class="form-select" id="interestType" required>
+                                            <option value="" selected disabled>Pilih opsi</option>
+                                            <option value="test-drive">Test Drive</option>
+                                            <option value="more-info">Informasi Lebih Lanjut</option>
+                                            <option value="discussion">Diskusi Harga</option>
+                                            <option value="purchase">Pembelian Langsung</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100" id="sendWhatsApp">
+                                        <i class="fab fa-whatsapp me-2"></i> Kirim via WhatsApp
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
     <!-- Kontak -->
     <section id="kontak" class="contact">
@@ -1263,6 +1471,33 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        $(document).ready(function() {
+        // Filter galeri
+        $('.gallery-filter button').click(function() {
+            $('.gallery-filter button').removeClass('active');
+            $(this).addClass('active');
+            
+            var filterValue = $(this).attr('data-filter');
+            
+            if (filterValue === 'all') {
+                $('.gallery-item').show();
+            } else {
+                $('.gallery-item').hide();
+                $('.gallery-item.' + filterValue).show();
+            }
+        });
+        
+        // Modal galeri
+        $('.btn-view').click(function() {
+            var imgSrc = $(this).attr('data-img');
+            var title = $(this).attr('data-title');
+            var desc = $(this).attr('data-desc');
+            
+            $('#galleryModalImage').attr('src', imgSrc);
+            $('#galleryModalTitle').text(title);
+            $('#galleryModalDesc').text(desc);
+        });
+    });
         $(document).ready(function () {
             // Back to top button
             $(window).scroll(function () {
@@ -1328,6 +1563,236 @@
             });
         });
     </script>
+
+<script>
+    $(document).ready(function() {
+        // Handle car detail button click
+        $('.btn-detail').click(function() {
+            const carName = $(this).data('car');
+            const carPrice = $(this).data('price');
+            const carYear = $(this).data('year');
+            const carMileage = $(this).data('mileage');
+            const carFuel = $(this).data('fuel');
+            const carTransmission = $(this).data('transmission');
+            const carSeats = $(this).data('seats');
+            const carImage = $(this).data('image');
+            const carDescription = $(this).data('description');
+            
+            // Format price with IDR currency
+            const formattedPrice = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                maximumFractionDigits: 0
+            }).format(carPrice);
+            
+            // Format mileage
+            const formattedMileage = parseInt(carMileage).toLocaleString('id-ID') + ' km';
+            
+            // Update modal content
+            $('#modalCarName').text(carName);
+            $('#modalCarPrice').text(formattedPrice);
+            $('#modalCarYear').text(carYear);
+            $('#modalCarMileage').text(formattedMileage);
+            $('#modalCarFuel').text(carFuel);
+            $('#modalCarTransmission').text(carTransmission);
+            $('#modalCarSeats').text(carSeats);
+            $('#modalCarImage').attr('src', carImage);
+            $('#modalCarDescription').text(carDescription);
+            
+            // Store car details for WhatsApp message
+            $('#carDetailModal').data('car-details', {
+                name: carName,
+                price: formattedPrice,
+                year: carYear,
+                mileage: formattedMileage,
+                fuel: carFuel,
+                transmission: carTransmission,
+                seats: carSeats
+            });
+        });
+        
+        // Handle form submission
+        $('#interestForm').submit(function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const carDetails = $('#carDetailModal').data('car-details');
+            const customerName = $('#customerName').val().trim();
+            const customerPhone = $('#customerPhone').val().trim();
+            const interestType = $('#interestType').val();
+            
+            // Validate form data
+            if (!customerName || !customerPhone || !interestType) {
+                alert('Mohon lengkapi semua field yang diperlukan');
+                return;
+            }
+            
+            // Validate phone number (basic validation)
+            const phoneRegex = /^(\+62|62|0)[0-9]{8,13}$/;
+            if (!phoneRegex.test(customerPhone.replace(/\s+/g, ''))) {
+                alert('Mohon masukkan nomor WhatsApp yang valid');
+                return;
+            }
+            
+            // Format phone number for WhatsApp (remove leading 0 and add +62)
+            let formattedPhone = customerPhone.replace(/\s+/g, '');
+            if (formattedPhone.startsWith('0')) {
+                formattedPhone = '62' + formattedPhone.substring(1);
+            } else if (formattedPhone.startsWith('+62')) {
+                formattedPhone = formattedPhone.substring(1);
+            } else if (!formattedPhone.startsWith('62')) {
+                formattedPhone = '62' + formattedPhone;
+            }
+            
+            // Create interest type text
+            const interestTexts = {
+                'test-drive': 'Test Drive',
+                'more-info': 'Informasi Lebih Lanjut',
+                'discussion': 'Diskusi Harga',
+                'purchase': 'Pembelian Langsung'
+            };
+            
+            // Create WhatsApp message
+            const message = `Halo! Saya tertarik dengan mobil berikut:
+
+            🚗 *${carDetails.name}*
+            💰 Harga: ${carDetails.price}
+            📅 Tahun: ${carDetails.year}
+            🛣️ Kilometer: ${carDetails.mileage}
+            ⛽ Bahan Bakar: ${carDetails.fuel}
+            ⚙️ Transmisi: ${carDetails.transmission}
+            💺 Jumlah Kursi: ${carDetails.seats}
+
+            📝 *Data Saya:*
+            👤 Nama: ${customerName}
+            📱 WhatsApp: ${customerPhone}
+            🎯 Kepentingan: ${interestTexts[interestType]}
+
+            Mohon informasi lebih lanjut. Terima kasih!`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Create WhatsApp URL (replace with your business WhatsApp number)
+            const businessWhatsApp = '6281649113708'; // Ganti dengan nomor WhatsApp bisnis Anda
+            const whatsappUrl = `https://wa.me/${businessWhatsApp}?text=${encodedMessage}`;
+            
+            // Show loading state
+            const submitBtn = $('#sendWhatsApp');
+            const originalText = submitBtn.html();
+            submitBtn.html('<i class="fas fa-spinner fa-spin me-2"></i> Mengirim...');
+            submitBtn.prop('disabled', true);
+            
+            // Simulate a brief delay for better UX
+            setTimeout(() => {
+                // Open WhatsApp
+                window.open(whatsappUrl, '_blank');
+                
+                // Reset button
+                submitBtn.html(originalText);
+                submitBtn.prop('disabled', false);
+                
+                // Reset form
+                $('#interestForm')[0].reset();
+                
+                // Close modal after a brief delay
+                setTimeout(() => {
+                    $('#carDetailModal').modal('hide');
+                }, 1000);
+                
+                // Show success message
+                showSuccessMessage('Pesan berhasil dikirim! Anda akan diarahkan ke WhatsApp.');
+                
+            }, 1500);
+        });
+        
+        // Reset form when modal is hidden
+        $('#carDetailModal').on('hidden.bs.modal', function() {
+            $('#interestForm')[0].reset();
+            $('#sendWhatsApp').html('<i class="fab fa-whatsapp me-2"></i> Kirim via WhatsApp');
+            $('#sendWhatsApp').prop('disabled', false);
+        });
+        
+        // Phone number input formatting
+        $('#customerPhone').on('input', function() {
+            let value = $(this).val().replace(/\D/g, ''); // Remove non-digits
+            
+            // Format phone number as user types
+            if (value.length > 0) {
+                if (value.startsWith('62')) {
+                    value = '+' + value;
+                } else if (value.startsWith('0')) {
+                    // Keep the 0 prefix for Indonesian numbers
+                } else {
+                    value = '0' + value;
+                }
+            }
+            
+            $(this).val(value);
+        });
+        
+        // Success message function
+        function showSuccessMessage(message) {
+            // Create or update success alert
+            let alertDiv = $('#successAlert');
+            if (alertDiv.length === 0) {
+                alertDiv = $(`
+                    <div id="successAlert" class="alert alert-success alert-dismissible fade show position-fixed" 
+                         style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+                        <i class="fas fa-check-circle me-2"></i>
+                        <span id="successMessage"></span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `);
+                $('body').append(alertDiv);
+            }
+            
+            $('#successMessage').text(message);
+            alertDiv.removeClass('fade').addClass('show');
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                alertDiv.alert('close');
+            }, 5000);
+        }
+        
+        // Handle modal loading state
+        $('#carDetailModal').on('show.bs.modal', function() {
+            // Add loading animation if needed
+            $(this).find('.modal-body').addClass('loading');
+        });
+        
+        $('#carDetailModal').on('shown.bs.modal', function() {
+            // Remove loading animation
+            $(this).find('.modal-body').removeClass('loading');
+            // Focus on first input
+            $('#customerName').focus();
+        });
+        
+        // Add some additional validation
+        $('#customerName').on('input', function() {
+            const value = $(this).val();
+            // Remove numbers and special characters, allow only letters and spaces
+            $(this).val(value.replace(/[^a-zA-Z\s]/g, ''));
+        });
+        
+        // Add phone number validation feedback
+        $('#customerPhone').on('blur', function() {
+            const phoneValue = $(this).val().replace(/\s+/g, '');
+            const phoneRegex = /^(\+62|62|0)[0-9]{8,13}$/;
+            
+            if (phoneValue && !phoneRegex.test(phoneValue)) {
+                $(this).addClass('is-invalid');
+                if ($('#phoneError').length === 0) {
+                    $(this).after('<div id="phoneError" class="invalid-feedback">Format nomor WhatsApp tidak valid</div>');
+                }
+            } else {
+                $(this).removeClass('is-invalid');
+                $('#phoneError').remove();
+            }
+        });
+    });
+</script>
 </body>
 
 </html>
